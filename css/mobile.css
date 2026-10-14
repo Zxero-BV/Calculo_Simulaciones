@@ -1,0 +1,208 @@
+/* mobile.css — interfaz móvil: barra inferior tipo app, carruseles, tablas como tarjetas y controles táctiles */
+
+/* Elementos que solo existen en móvil (ocultos en escritorio) */
+.tabbar, .sheet, .swipe-hint { display: none; }
+
+/* =====================================================
+   TABLET Y MÓVIL (hasta 980 px)
+   ===================================================== */
+@media (max-width: 980px) {
+  html { scroll-padding-top: 66px; }
+  body { padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
+
+  /* barra superior más baja; el menú pasa a la barra inferior */
+  nav ul { display: none; }
+  nav .wrap { height: 56px; }
+  .logo { font-size: .95rem; }
+  .icon-btn { width: 44px; height: 44px; font-size: 1.15rem; }
+  .to-top { display: none; }
+  .toast { bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+
+  /* ---------- Barra inferior ---------- */
+  .tabbar {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+    border-top: 1px solid var(--card-b);
+  }
+  .tabbar a, .tabbar button {
+    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    min-height: 56px; padding: 4px 2px; border: 0; border-radius: 14px; background: transparent;
+    color: var(--muted); text-decoration: none; cursor: pointer;
+    font: 600 .68rem 'Inter', sans-serif; transition: color .2s, background .2s;
+  }
+  .tabbar i { font-style: normal; font-size: 1.3rem; line-height: 1; transition: transform .2s; }
+  .tabbar .active { color: var(--text); background: rgba(34, 211, 238, .12); }
+  .tabbar .active i { transform: scale(1.12); }
+  .tabbar .active::after {
+    content: ""; position: absolute; top: 1px; width: 22px; height: 3px; border-radius: 3px;
+    background: linear-gradient(90deg, var(--cyan), var(--violet));
+  }
+  /* botón central destacado: Laboratorio */
+  .tabbar .tab-main { justify-content: flex-end; padding-bottom: 9px; }
+  .tabbar .tab-main i {
+    display: grid; place-items: center; width: 48px; height: 48px; margin-top: -20px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--violet)); color: #07101f;
+    box-shadow: 0 8px 20px -6px rgba(34, 211, 238, .75);
+  }
+  .tabbar .tab-main.active { background: transparent; }
+  .tabbar .tab-main.active::after { display: none; }
+
+  /* ---------- Panel "Más" ---------- */
+  .sheet:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 80; pointer-events: none; }
+  .sheet-bg { position: absolute; inset: 0; background: rgba(3, 6, 15, .6); opacity: 0; transition: opacity .25s; }
+  .sheet-panel {
+    position: absolute; left: 0; right: 0; bottom: 0; max-height: 85vh; max-height: 85dvh; overflow: auto; overscroll-behavior: contain;
+    padding: 10px 18px calc(22px + env(safe-area-inset-bottom, 0px));
+    border-radius: 26px 26px 0 0; background: var(--bg); border: 1px solid var(--card-b); border-bottom: 0;
+    transform: translateY(100%); transition: transform .3s cubic-bezier(.2, .8, .2, 1); outline: none;
+  }
+  .sheet.open { pointer-events: auto; }
+  .sheet.open .sheet-bg { opacity: 1; }
+  .sheet.open .sheet-panel { transform: none; }
+  .sheet-grip { width: 44px; height: 5px; border-radius: 3px; background: var(--card-b); margin: 0 auto 14px; }
+  .sheet-panel h3 { font-size: 1.1rem; margin-bottom: 14px; }
+  .sheet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .sheet-grid a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 84px; padding: 12px 6px;
+    border-radius: 16px; border: 1px solid var(--card-b); background: var(--card); text-decoration: none; text-align: center;
+    font-size: .82rem; font-weight: 600;
+  }
+  .sheet-grid a:active { background: rgba(34, 211, 238, .14); }
+  .sheet-grid i { font-style: normal; font-size: 1.6rem; line-height: 1; }
+  .sheet-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .sheet-actions .btn { padding: 12px 10px; font-size: .92rem; }
+}
+
+/* =====================================================
+   MÓVIL (hasta 640 px)
+   ===================================================== */
+@media (max-width: 640px) {
+  :root { --radius: 18px; }
+  .wrap { width: min(1120px, 100% - 32px); }
+  section { padding: 56px 0; }
+  h2 { font-size: 1.65rem; margin-bottom: 12px; }
+  .lead { font-size: 1rem; }
+  .eyebrow { font-size: .72rem; margin-bottom: 10px; }
+  .subhead { margin-top: 40px; font-size: 1.2rem; }
+
+  /* controles táctiles */
+  .btn { min-height: 50px; justify-content: center; padding: 13px 22px; }
+  .btn.sm { min-height: 44px; }
+  input, select, textarea { font-size: 16px !important; } /* evita el zoom automático de iOS */
+  .check { padding: 14px; }
+  .del { width: 44px; height: 44px; font-size: 1.1rem; }
+  .faq summary { min-height: 44px; align-items: center; }
+  .res { padding: 16px; }
+
+  /* ---------- Portada ---------- */
+  .hero { padding: 40px 0 44px; }
+  .hero h1 { font-size: clamp(2rem, 9.4vw, 2.7rem); max-width: none; margin-bottom: 16px; }
+  .hero p { font-size: 1rem; margin-bottom: 26px; }
+  .badge { font-size: .76rem; margin-bottom: 18px; padding: 6px 12px; }
+  .hero .btns { flex-direction: column; gap: 10px; }
+  .hero .btns .btn { width: 100%; }
+  .stats { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 34px; }
+  .stat { padding: 14px; }
+  .stat strong { font-size: 1.5rem; }
+  .stat span { font-size: .76rem; line-height: 1.35; display: block; }
+
+  /* ---------- Carruseles con desplazamiento lateral ---------- */
+  .swipe-hint { display: block; margin-top: 22px; font-size: .78rem; color: var(--muted); text-align: right; }
+  .swipe-hint + .snap { margin-top: 8px; }
+  .snap {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-left: -16px; margin-right: -16px; padding: 4px 16px 14px; scroll-padding: 0 16px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .snap::-webkit-scrollbar { display: none; }
+  .snap > * { flex: 0 0 80%; scroll-snap-align: start; }
+  .snap.units > * { flex-basis: 62%; }
+  .snap .reveal { opacity: 1; transform: none; }
+  .snap .card { padding: 22px; }
+  .snap .card:hover { transform: none; }
+
+  /* ---------- Contenido ---------- */
+  .card { padding: 22px; }
+  .card:hover { transform: none; }
+  .quote { padding: 22px; }
+  .step { grid-template-columns: 44px 1fr; gap: 14px; padding: 16px; }
+  .step::before { width: 44px; height: 44px; font-size: 1.15rem; border-radius: 13px; }
+  .tl { padding-left: 18px; }
+  .team { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .member { padding: 18px 10px; }
+  .member:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .cta { padding: 34px 18px; border-radius: 24px; }
+  .cta .btns { flex-direction: column; }
+  .cta .btns .btn { width: 100%; }
+
+  /* ---------- Laboratorio y calculadora ---------- */
+  .lab { padding: 14px; border-radius: 20px; margin-top: 28px; }
+  .canvas-box { border-radius: 12px; }
+  .hud { top: 8px; left: 8px; }
+  .pill { font-size: .72rem; padding: 4px 10px; }
+  .formula { font-size: .88rem; padding: 14px; }
+  #runTest { min-height: 56px; font-size: 1.05rem; }
+  .panel { padding: 16px; border-radius: 20px; margin-top: 24px; }
+  #growthChart { height: 250px; }
+  .tiles { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .tiles.two-tiles { grid-template-columns: 1fr 1fr; }
+  .tile { padding: 10px 6px; }
+  .tile strong { font-size: 1rem; }
+  .res-grid strong { font-size: 1.2rem; }
+  .preset div { padding: 14px 16px; }
+
+  /* ---------- Tabla de mediciones como tarjetas ---------- */
+  .tbl-wrap { border: 0; background: transparent; overflow: visible; margin-top: 22px; }
+  table, tbody, tfoot, tr, td { display: block; width: 100%; min-width: 0; }
+  thead { display: none; }
+  tbody tr, tfoot tr {
+    position: relative; padding: 12px 16px; margin-bottom: 10px; border-radius: 16px;
+    border: 1px solid var(--card-b); background: var(--card);
+  }
+  tfoot tr { background: rgba(34, 211, 238, .08); border-color: rgba(34, 211, 238, .35); }
+  td, tfoot td { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border: 0 !important; background: transparent; text-align: right; font-size: .92rem; }
+  td::before { content: attr(data-label); color: var(--muted); font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; text-align: left; flex: none; }
+  td.cell-name { font: 700 1.05rem 'Sora', sans-serif; padding-right: 48px; justify-content: flex-start; text-align: left; }
+  td.cell-name::before { display: none; }
+  td.cell-del { position: absolute; top: 6px; right: 6px; width: auto; padding: 0; }
+  td.cell-del::before { display: none; }
+  td:empty { display: none; }
+  td.empty { display: block; text-align: center; padding: 26px 12px; border: 1px dashed var(--card-b) !important; border-radius: 16px; }
+  td.empty::before { display: none; }
+  tbody tr:has(td.empty) { padding: 0; border: 0; background: transparent; }
+  .tbl-actions { justify-content: stretch; }
+  .tbl-actions .btn { flex: 1; }
+  .bar-row { grid-template-columns: 76px 1fr 54px; gap: 8px; font-size: .82rem; }
+
+  /* ---------- Encuesta, quiz y glosario ---------- */
+  .field { margin-bottom: 26px; }
+  .chip { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px; font-size: .95rem; }
+  #surveyForm .btn { width: 100%; }
+  .srv-head .btns { width: 100%; }
+  .srv-head .btns .btn { flex: 1; }
+  .q-q { font-size: 1.15rem; margin: 12px 0 16px; }
+  .q-opt { min-height: 54px; padding: 14px 16px; font-size: 1rem; }
+  .q-next { width: 100%; justify-content: center; }
+  .q-score { font-size: 2.8rem; }
+  .gloss { max-height: none; padding-right: 0; }
+  .gloss div { padding: 14px 16px; }
+  .faq details { padding: 14px 16px; }
+}
+
+/* Teléfonos muy angostos */
+@media (max-width: 360px) {
+  .hero h1 { font-size: 1.85rem; }
+  .tabbar a, .tabbar button { font-size: .62rem; }
+  .sheet-grid { gap: 8px; }
+  .stats { grid-template-columns: 1fr; }
+}
+
+/* Teléfono en horizontal: barra inferior más compacta */
+@media (max-width: 980px) and (max-height: 480px) {
+  .tabbar a, .tabbar button { min-height: 44px; flex-direction: row; gap: 6px; }
+  .tabbar .tab-main i { width: 34px; height: 34px; margin-top: 0; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+}

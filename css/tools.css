@@ -1,0 +1,92 @@
+/* ===== Paneles y columnas ===== */
+.panel{padding:30px;border-radius:26px;border:1px solid var(--card-b);background:linear-gradient(180deg,var(--card),transparent);margin-top:36px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:900px){.two{grid-template-columns:1fr}.panel{padding:20px}}
+.res-card{margin-top:16px;padding:18px;border-radius:16px;border:1px solid var(--card-b);background:var(--soft)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:16px}
+.tile{padding:14px;border-radius:14px;background:var(--soft);border:1px solid var(--card-b);text-align:center}
+.tile strong{display:block;font:800 1.2rem 'Sora',sans-serif;font-variant-numeric:tabular-nums}
+.tile strong.bad{color:var(--red)}
+.tile span{font-size:.75rem;color:var(--muted);line-height:1.3;display:block}
+.two-tiles{margin-top:18px}
+
+/* ===== Gráfico de crecimiento ===== */
+#growthChart{width:100%;height:320px;display:block;border-radius:16px;background:var(--soft);border:1px solid var(--card-b)}
+.legend{list-style:none;display:grid;gap:8px;margin-top:14px;font-size:.88rem;color:var(--muted)}
+.legend li{display:flex;gap:10px;align-items:center}
+.legend i{width:22px;height:5px;border-radius:3px;display:inline-block;flex:none}
+
+/* ===== Calculadora ===== */
+.presets{display:grid;gap:10px;margin-top:12px}
+.preset{display:block;position:relative;cursor:pointer}
+.preset input{position:absolute;opacity:0;inset:0}
+.preset div{padding:14px 18px;border-radius:14px;border:1px solid var(--card-b);background:var(--soft);transition:.2s}
+.preset b{display:block;font-size:.98rem}
+.preset span{font-size:.82rem;color:var(--muted)}
+.preset input:checked + div{border-color:var(--cyan);background:rgba(34,211,238,.12)}
+.preset input:focus-visible + div{outline:2px solid var(--cyan);outline-offset:2px}
+.gauge{height:14px;border-radius:99px;background:var(--soft);overflow:hidden;margin-bottom:6px}
+.gauge i{display:block;height:100%;width:0;border-radius:99px;transition:width .5s ease,background .3s;background:var(--green)}
+.empty-hint{margin-top:16px;padding:16px;border-radius:14px;border:1px dashed var(--card-b);color:var(--muted);font-size:.92rem;text-align:center}
+#estBox{display:none}
+#estBox.show{display:block}
+
+/* ===== Checklist ===== */
+.checklist{display:grid;gap:8px}
+.check{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;border:1px solid var(--card-b);background:var(--soft);cursor:pointer;font-size:.94rem;transition:.2s}
+.check input{margin-top:4px;accent-color:var(--cyan);width:18px;height:18px;flex:none}
+.check.done{border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.08)}
+.check.done span{text-decoration:line-through;color:var(--muted)}
+.res-list{display:grid;gap:10px;margin-top:14px}
+.res{display:block;padding:16px 18px;border-radius:14px;border:1px solid var(--card-b);background:var(--card);text-decoration:none;transition:.2s}
+.res:hover{border-color:var(--cyan);transform:translateX(4px)}
+.res b{display:block;font:700 1rem 'Sora',sans-serif;margin-bottom:2px}
+.res span{color:var(--muted);font-size:.88rem;line-height:1.5;display:block}
+
+/* ===== Encuesta ===== */
+.field{margin-bottom:22px}
+.flabel{display:block;font-weight:600;font-size:.95rem;margin-bottom:10px}
+.flabel output{color:var(--cyan);font-weight:800}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chip{padding:9px 16px;border-radius:99px;border:1px solid var(--card-b);background:var(--soft);font-size:.9rem;transition:.2s;user-select:none}
+.chip:has(input:checked){border-color:var(--cyan);background:rgba(34,211,238,.16);color:var(--text)}
+.chip:has(input:focus-visible){outline:2px solid var(--cyan);outline-offset:2px}
+.scale{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:6px}
+textarea,.search{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--card-b);background:var(--field);color:var(--text);font:500 .95rem 'Inter',sans-serif;outline:none;resize:vertical}
+textarea:focus,.search:focus{border-color:var(--cyan)}
+.srv-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.srv-block{margin-top:22px}
+.srv-block h4{font-size:.95rem;margin-bottom:10px}
+.srv-empty{padding:30px;text-align:center;border-radius:20px;border:1px dashed var(--card-b);color:var(--muted)}
+.srv-note{margin-top:14px;font-size:.82rem;color:var(--muted)}
+
+/* ===== Quiz ===== */
+.quiz{max-width:760px;margin-inline:auto}
+.q-top{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.q-q{font:700 1.3rem 'Sora',sans-serif;margin:16px 0 20px;line-height:1.3}
+.q-opts{display:grid;gap:10px}
+.q-opt{text-align:left;padding:14px 18px;border-radius:14px;border:1px solid var(--card-b);background:var(--soft);color:var(--text);font:500 .98rem 'Inter',sans-serif;cursor:pointer;transition:.2s}
+.q-opt:hover:not(:disabled){border-color:var(--cyan);background:rgba(34,211,238,.1)}
+.q-opt.ok{border-color:var(--green);background:rgba(74,222,128,.14)}
+.q-opt.bad{border-color:var(--red);background:rgba(248,113,113,.14)}
+.q-opt:disabled{cursor:default}
+.q-exp{margin-top:16px;padding:14px 18px;border-radius:14px;background:rgba(34,211,238,.08);border:1px dashed rgba(34,211,238,.4);font-size:.92rem;color:var(--muted)}
+.q-next{margin-top:18px}
+.q-end{text-align:center;padding:10px 0}
+.q-score{font:800 3.4rem 'Sora',sans-serif}
+
+/* ===== Glosario y FAQ ===== */
+.search{margin:6px 0 18px}
+.gloss{display:grid;gap:10px;max-height:520px;overflow:auto;padding-right:6px}
+.gloss div{padding:14px 18px;border-radius:14px;background:var(--card);border:1px solid var(--card-b)}
+.gloss dt{font:700 1rem 'Sora',sans-serif;color:var(--cyan);margin-bottom:2px}
+.gloss dd{color:var(--muted);font-size:.92rem}
+.faq{display:grid;gap:10px;margin-top:8px}
+.faq details{padding:16px 20px;border-radius:14px;background:var(--card);border:1px solid var(--card-b)}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--cyan);font-weight:800;font-size:1.2rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;color:var(--muted);font-size:.94rem}
