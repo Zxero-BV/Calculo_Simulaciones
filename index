@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Capacidad de cálculo en simulaciones educativas</title>
+<meta name="description" content="¿Por qué las simulaciones educativas se traban? Aprende cómo funciona la capacidad de cálculo, mide tu equipo en tiempo real, responde la encuesta y pon a prueba lo aprendido.">
+<meta name="theme-color" content="#0b1020">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Simulaciones">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Capacidad de cálculo en simulaciones educativas">
+<meta property="og:description" content="Laboratorio interactivo, calculadora, encuesta y quiz. Proyecto ABP del Liceo Bicentenario Instituto Comercial.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script>try{var t=JSON.parse(localStorage.getItem('sim_theme'));if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/lab.css">
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><i></i> Cálculo &amp; Simulaciones</a>
+    <ul id="menu">
+      <li><a href="#concepto">Concepto</a></li>
+      <li><a href="#crecimiento">Crecimiento</a></li>
+      <li><a href="#laboratorio">Laboratorio</a></li>
+      <li><a href="#calculadora">Calculadora</a></li>
+      <li><a href="#soluciones">Soluciones</a></li>
+      <li><a href="#encuesta">Encuesta</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button id="themeBtn" class="icon-btn" type="button" data-theme-toggle aria-label="Cambiar tema">☀️</button>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<noscript><p style="padding:20px;text-align:center">Esta página necesita JavaScript para funcionar.</p></noscript>
+
+<!-- ============ INICIO ============ -->
+<header class="hero" id="inicio">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="badge"><b></b> Proyecto ABP · Liceo Bicentenario Instituto Comercial</div>
+    <h1>La <span class="grad">capacidad de cálculo</span> detrás de cada simulación</h1>
+    <p>Una simulación educativa parece simple en pantalla, pero por dentro realiza millones de operaciones por segundo. Aquí aprendes cómo funciona, mides tu equipo, respondes la encuesta y pones a prueba lo aprendido.</p>
+    <div class="btns">
+      <a class="btn primary" href="#laboratorio">⚡ Probar mi equipo</a>
+      <a class="btn ghost" href="#concepto">Aprender el concepto</a>
+      <a class="btn ghost" href="#encuesta">📝 Responder encuesta</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong class="grad" data-count="60">0</strong><span>cuadros por segundo que necesita una animación fluida</span></div>
+      <div class="stat"><strong class="grad" data-count="1000000" data-fmt="M">0</strong><span>operaciones por segundo en una simulación mediana</span></div>
+      <div class="stat"><strong class="grad" data-count="6">0</strong><span>factores que influyen en el rendimiento</span></div>
+      <div class="stat"><strong class="grad" data-count="7">0</strong><span>herramientas interactivas en esta página</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CONCEPTO ============ -->
+<section id="concepto">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">01 · Concepto</span>
+      <h2>¿Qué es la capacidad de cálculo?</h2>
+      <p class="lead">Es la cantidad de operaciones matemáticas que un computador puede resolver en un tiempo determinado. Mientras más rápido calcula, más fluida y precisa es una simulación de ciencias, matemáticas o programación.</p>
+    </div>
+    <p class="swipe-hint">Desliza para ver más →</p>
+    <div class="grid g3 snap">
+      <div class="card reveal"><div class="ico">🧠</div><h3>Procesador (CPU)</h3><p>Es el cerebro del equipo. Resuelve las ecuaciones de la simulación una tras otra. Menos núcleos y menor frecuencia significan más tiempo de espera.</p></div>
+      <div class="card reveal"><div class="ico">💾</div><h3>Memoria RAM</h3><p>Guarda los datos mientras se calcula. Si se llena, el sistema se vuelve lento y el navegador puede trabarse o cerrarse.</p></div>
+      <div class="card reveal"><div class="ico">🎨</div><h3>Gráficos (GPU)</h3><p>Dibuja cada cuadro en pantalla. Las simulaciones 3D o con muchas partículas dependen mucho de ella.</p></div>
+      <div class="card reveal"><div class="ico">📡</div><h3>Conexión a internet</h3><p>Muchas simulaciones se cargan desde la web. Una red limitada alarga el tiempo de carga antes de empezar.</p></div>
+      <div class="card reveal"><div class="ico">🧩</div><h3>Navegador y software</h3><p>Demasiadas pestañas o programas abiertos compiten por los mismos recursos y bajan el rendimiento general.</p></div>
+      <div class="card reveal"><div class="ico">🔬</div><h3>Complejidad de la simulación</h3><p>No todas pesan igual: más partículas, más variables o más precisión exigen muchísimo más cálculo.</p></div>
+    </div>
+
+    <h3 class="subhead reveal">Unidades en un minuto</h3>
+    <p class="swipe-hint">Desliza para ver más →</p>
+    <div class="grid g5 units snap">
+      <div class="unit reveal"><strong>GHz</strong><span>Miles de millones de ciclos por segundo del procesador. Más GHz, más velocidad base.</span></div>
+      <div class="unit reveal"><strong>FLOPS</strong><span>Operaciones con decimales por segundo. Es la medida clásica de cálculo.</span></div>
+      <div class="unit reveal"><strong>GB</strong><span>Gigabytes: tamaño de la memoria RAM o del almacenamiento.</span></div>
+      <div class="unit reveal"><strong>FPS</strong><span>Cuadros por segundo. Con 60 FPS la animación se ve suave.</span></div>
+      <div class="unit reveal"><strong>ms</strong><span>Milisegundos: milésimas de segundo. Se usan para medir tiempos de carga.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORIA ============ -->
+<section id="historia" class="alt">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Un poco de historia</span>
+      <h2>Del ENIAC al celular</h2>
+      <p class="lead">La capacidad de cálculo ha crecido de forma impresionante. Por eso hoy una simple página web puede ejecutar simulaciones que antes necesitaban una sala completa de máquinas.</p>
+    </div>
+    <ol class="tl">
+      <li class="reveal"><time>1945</time><div><h3>ENIAC</h3><p>Uno de los primeros computadores electrónicos. Ocupaba una sala entera y hacía en el orden de miles de sumas por segundo.</p></div></li>
+      <li class="reveal"><time>1965</time><div><h3>Ley de Moore</h3><p>Gordon Moore observó que la cantidad de transistores de un chip se duplicaba cada cierto tiempo. Esa tendencia impulsó la velocidad de los procesadores durante décadas.</p></div></li>
+      <li class="reveal"><time>1971</time><div><h3>Primer microprocesador comercial</h3><p>El Intel 4004 puso un procesador completo en un solo chip y abrió el camino a los computadores personales.</p></div></li>
+      <li class="reveal"><time>2002</time><div><h3>Nacen las simulaciones PhET</h3><p>La Universidad de Colorado Boulder crea PhET, un proyecto de simulaciones interactivas de ciencias y matemáticas para enseñar.</p></div></li>
+      <li class="reveal"><time>Hoy</time><div><h3>Procesadores multinúcleo</h3><p>Hasta un celular tiene varios núcleos que trabajan en paralelo. Aun así, equipos antiguos o saturados siguen quedándose cortos.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ CRECIMIENTO ============ -->
+<section id="crecimiento">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">02 · Matemática del problema</span>
+      <h2>¿Por qué el trabajo crece tan rápido?</h2>
+      <p class="lead">En muchas simulaciones cada objeto interactúa con todos los demás. Si hay N objetos, hay cerca de N × N interacciones. Duplicar los objetos no duplica el trabajo: lo cuadruplica. Mueve el control y míralo en el gráfico.</p>
+    </div>
+    <div class="panel reveal">
+      <div class="two">
+        <div>
+          <canvas id="growthChart" role="img" aria-label="Gráfico que compara el crecimiento lineal, N log N y cuadrático"></canvas>
+          <ul class="legend">
+            <li><i style="background:var(--green)"></i> Lineal (N): cada objeto se calcula una vez</li>
+            <li><i style="background:var(--yellow)"></i> N · log N: algoritmos más inteligentes</li>
+            <li><i style="background:var(--red)"></i> Cuadrático (N²): todos con todos</li>
+          </ul>
+        </div>
+        <div>
+          <div class="ctl">
+            <label for="gN"><span>Cantidad de objetos (N)</span><b id="gNLabel">300</b></label>
+            <input type="range" id="gN" min="10" max="1000" step="10" value="300">
+          </div>
+          <div class="tiles">
+            <div class="tile"><strong id="gLin">--</strong><span>operaciones (lineal)</span></div>
+            <div class="tile"><strong id="gNlog">--</strong><span>operaciones (N log N)</span></div>
+            <div class="tile"><strong id="gQuad" class="bad">--</strong><span>interacciones (N²)</span></div>
+          </div>
+          <div class="ctl">
+            <label for="gSpeed"><span>Velocidad del equipo (modelo didáctico)</span></label>
+            <select id="gSpeed">
+              <option value="10">Muy básico · 10 millones de operaciones/s</option>
+              <option value="50">Básico · 50 millones/s</option>
+              <option value="200" selected>Medio · 200 millones/s</option>
+              <option value="1000">Bueno · 1.000 millones/s</option>
+              <option value="5000">Muy bueno · 5.000 millones/s</option>
+            </select>
+          </div>
+          <div class="res-card" id="gRes">
+            <div class="res-grid">
+              <div><strong id="gMs">--</strong><span>por cuadro</span></div>
+              <div><strong id="gFps">--</strong><span>FPS estimados</span></div>
+            </div>
+            <span class="verdict" id="gVerdict">--</span>
+            <p class="small" id="gNote" style="margin-top:10px"></p>
+          </div>
+          <p class="small" style="margin-top:12px">Modelo simplificado: cada interacción cuesta unas 20 operaciones simples. Sirve para entender la tendencia, no para predecir un equipo real.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEMA / MARCO ============ -->
+<section id="problema" class="alt">
+  <div class="wrap">
+    <div class="problem">
+      <div class="reveal">
+        <span class="eyebrow">03 · El problema</span>
+        <h2>Lo que pasa en nuestro liceo</h2>
+        <p class="lead">Las simulaciones de ciencias, matemáticas y programación son una herramienta poderosa para practicar y entender contenidos complejos. Pero cuando el equipo no da abasto, esa herramienta deja de servir.</p>
+      </div>
+      <div class="quote reveal">
+        <h3>Lo que observamos</h3>
+        <p class="small">Problemas que aparecen al usar simulaciones en clases:</p>
+        <ul>
+          <li>Las simulaciones funcionan lento</li>
+          <li>Se traban o directamente no se pueden usar</li>
+          <li>Los estudiantes no alcanzan a practicar ni comprender contenidos complejos</li>
+          <li>Se limita el uso de la tecnología en clases</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LABORATORIO ============ -->
+<section id="laboratorio">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">04 · Laboratorio interactivo</span>
+      <h2>Mide la capacidad de cálculo de tu equipo</h2>
+      <p class="lead">Esta simulación calcula cómo se atraen entre sí cientos de partículas. Cada partícula interactúa con todas las demás, así que el trabajo crece muy rápido. Mueve el control y observa cómo cambian los cuadros por segundo (FPS).</p>
+    </div>
+
+    <div class="lab reveal">
+      <div class="lab-grid">
+        <div>
+          <div class="canvas-box">
+            <canvas id="simCanvas" width="800" height="500" aria-label="Simulación de partículas"></canvas>
+            <div class="hud">
+              <span class="pill">FPS <b id="fpsOut">--</b></span>
+              <span class="pill">Partículas <b id="nOut">200</b></span>
+            </div>
+          </div>
+          <div class="ctl">
+            <label for="nRange"><span>Cantidad de partículas</span><b id="nLabel">200</b></label>
+            <input type="range" id="nRange" min="20" max="800" step="10" value="200">
+          </div>
+          <div class="formula">
+            Cada cuadro exige <b id="fInter">40.000</b> interacciones (N × N). A 60 cuadros por segundo son <b id="fSec">2,4 millones</b> de cálculos por segundo.
+          </div>
+          <div class="btns" style="margin-top:18px">
+            <button class="btn ghost" id="toggleSim" type="button">⏸ Pausar simulación</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="sub">Test automático</div>
+          <p class="small">Corre dos pruebas (cálculo puro y simulación gráfica) y entrega un diagnóstico de tu dispositivo. Dura unos 8 segundos. Para no alterar el resultado, cierra otras pestañas antes de empezar.</p>
+          <div class="sysinfo">
+            <div><strong id="siCores">--</strong><span>Núcleos CPU</span></div>
+            <div><strong id="siRam">--</strong><span>RAM aprox.</span></div>
+            <div><strong id="siNet">--</strong><span>Conexión</span></div>
+          </div>
+          <button class="btn primary" id="runTest" type="button" style="width:100%;justify-content:center">▶ Iniciar test</button>
+          <div class="progress"><i id="bar"></i></div>
+          <div class="status" id="status" aria-live="polite">Listo para medir.</div>
+
+          <div class="result" id="result">
+            <div class="res-grid">
+              <div><strong id="rCpu">--</strong><span>Tiempo de cálculo</span></div>
+              <div><strong id="rFps">--</strong><span>FPS promedio</span></div>
+              <div><strong id="rStab">--</strong><span>Estabilidad</span></div>
+            </div>
+            <span class="verdict" id="verdict">--</span>
+            <p class="small" id="verdictText" style="margin-top:10px"></p>
+            <div class="save">
+              <input id="sala" type="text" placeholder="Sala o equipo (ej: Lab 1)" maxlength="30" aria-label="Nombre de la sala o equipo">
+              <button class="btn primary" id="saveBtn" type="button">Guardar en tabla</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:56px">
+      <h3 style="font-size:1.5rem">Registro de mediciones</h3>
+      <p class="lead" style="font-size:1rem;margin-top:6px">Tabla de datos para comparar salas y equipos: estado, tiempo promedio y estabilidad. Cada medición mide el dispositivo desde el que se hace el test.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Sala</th><th>Estado</th><th>Tiempo promedio</th><th>Estabilidad</th><th><span class="sr">Acción</span></th></tr></thead>
+          <tbody id="tbody"></tbody>
+          <tfoot id="tfoot"></tfoot>
+        </table>
+      </div>
+      <div id="bars" class="bars"></div>
+      <div class="tbl-actions">
+        <button class="btn ghost sm" id="csvBtn" type="button">⬇ Exportar CSV</button>
+        <button class="btn ghost sm" id="clearBtn" type="button">🗑 Borrar tabla</button>
+      </div>
+      <p class="small" style="margin-top:10px">Los datos se guardan solo en este navegador. Para juntar las mediciones de varios equipos, exporta el CSV de cada uno o anota los resultados en la tabla de papel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULADORA ============ -->
+<section id="calculadora" class="alt">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">05 · Calculadora</span>
+      <h2>¿Puede mi equipo con esta simulación?</h2>
+      <p class="lead">Calibra tu equipo (toma 1 segundo) y elige un tipo de simulación. La calculadora estima cuántos FPS lograría y cuántas partículas puedes usar sin que se trabe.</p>
+    </div>
+    <div class="panel reveal">
+      <div class="two">
+        <div>
+          <div class="sub">1 · Elige una simulación</div>
+          <div class="presets" id="presets" role="radiogroup" aria-label="Tipo de simulación"></div>
+        </div>
+        <div>
+          <div class="sub">2 · Calibra tu equipo</div>
+          <p class="small">Mide cuántas interacciones por segundo puede calcular este dispositivo.</p>
+          <button class="btn primary" id="calBtn" type="button" style="margin-top:12px">⚙ Calibrar mi equipo</button>
+          <div class="res-card" id="estBox">
+            <div class="sub" id="estName" style="margin-bottom:10px">--</div>
+            <div class="gauge"><i id="estGauge"></i></div>
+            <div class="res-grid">
+              <div><strong id="estFps">--</strong><span>FPS estimados</span></div>
+              <div><strong id="estMs">--</strong><span>ms por cuadro</span></div>
+              <div><strong id="estRate">--</strong><span>M inter./s</span></div>
+            </div>
+            <span class="verdict" id="estVerdict">--</span>
+            <p class="small" id="estNote" style="margin-top:10px"></p>
+            <div class="tiles two-tiles">
+              <div class="tile"><strong id="estMax60">--</strong><span>partículas máx. para 60 FPS</span></div>
+              <div class="tile"><strong id="estMax30">--</strong><span>partículas máx. para 30 FPS</span></div>
+            </div>
+          </div>
+          <p class="empty-hint" id="estHint">Primero calibra tu equipo para ver el resultado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUCIONES ============ -->
+<section id="soluciones">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">06 · Propuesta sustentable</span>
+      <h2>Cómo mejorar el uso de simulaciones</h2>
+      <p class="lead">No siempre hace falta comprar equipos nuevos. Estas acciones permiten aprovechar mejor lo que ya tenemos y sustentar una solicitud de mejora.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div><h3>Elegir simulaciones livianas</h3><p>Preferir versiones con menos partículas, gráficos simples o modo de baja calidad. Para aprender el concepto, muchas veces basta con eso.</p></div></div>
+      <div class="step reveal"><div><h3>Optimizar el equipo antes de usarlo</h3><p>Cerrar pestañas y programas innecesarios, y usar un solo navegador, libera RAM y procesador para la simulación.</p></div></div>
+      <div class="step reveal"><div><h3>Usar versiones sin conexión</h3><p>Descargar o dejar cargadas las simulaciones con anticipación reduce el tiempo de espera y la dependencia de la red.</p></div></div>
+      <div class="step reveal"><div><h3>Organizar el uso por turnos</h3><p>Trabajar en parejas o en grupos pequeños evita que todos los equipos y la red se saturen al mismo tiempo.</p></div></div>
+      <div class="step reveal"><div><h3>Presentar los datos como evidencia</h3><p>Con las mediciones de tiempo de carga y estabilidad por sala, se puede pedir una mejora de equipos o de conexión con respaldo real.</p></div></div>
+    </div>
+
+    <div class="two" style="margin-top:56px;align-items:start">
+      <div class="panel reveal">
+        <div class="sub">✅ Checklist antes de usar una simulación</div>
+        <p class="small">Marca lo que ya hiciste. Tu avance queda guardado en este navegador.</p>
+        <div class="progress"><i id="chkBar"></i></div>
+        <div class="small" id="chkText" style="margin-bottom:12px">0 de 8 listo</div>
+        <div id="checklist" class="checklist"></div>
+        <button class="btn ghost sm" id="chkReset" type="button" style="margin-top:14px">Reiniciar checklist</button>
+      </div>
+      <div class="reveal">
+        <div class="sub">🧰 Simulaciones y herramientas livianas</div>
+        <p class="small">Opciones conocidas que suelen funcionar bien en equipos modestos. Revisa en tu sala cuál responde mejor.</p>
+        <div class="res-list">
+          <a class="res" href="https://phet.colorado.edu/es/" target="_blank" rel="noopener"><b>PhET</b><span>Simulaciones de física, química, biología y matemáticas. Muchas se pueden descargar y usar sin conexión.</span></a>
+          <a class="res" href="https://www.geogebra.org/?lang=es" target="_blank" rel="noopener"><b>GeoGebra</b><span>Geometría, álgebra y cálculo interactivos para matemáticas.</span></a>
+          <a class="res" href="https://www.desmos.com/calculator" target="_blank" rel="noopener"><b>Desmos</b><span>Calculadora gráfica en línea, ligera y muy rápida.</span></a>
+          <a class="res" href="https://scratch.mit.edu/" target="_blank" rel="noopener"><b>Scratch</b><span>Programación por bloques para crear simulaciones simples.</span></a>
+          <a class="res" href="https://www.falstad.com/circuit/" target="_blank" rel="noopener"><b>Falstad</b><span>Simulador de circuitos eléctricos que corre directo en el navegador.</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENCUESTA ============ -->
+<section id="encuesta" class="alt">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">07 · Recolección de datos</span>
+      <h2>Encuesta a estudiantes y docentes</h2>
+      <p class="lead">Respuestas anónimas sobre la dificultad al usar simulaciones. Los resultados se resumen en tiempo real.</p>
+    </div>
+    <div class="two" style="align-items:start;margin-top:36px">
+      <form id="surveyForm" class="panel reveal" autocomplete="off">
+        <div class="field">
+          <span class="flabel">Soy…</span>
+          <div class="opts">
+            <label class="chip"><input type="radio" name="rol" value="Estudiante" required> Estudiante</label>
+            <label class="chip"><input type="radio" name="rol" value="Docente"> Docente</label>
+          </div>
+        </div>
+        <div class="field">
+          <span class="flabel">¿Con qué frecuencia usas simulaciones educativas en clases?</span>
+          <div class="opts">
+            <label class="chip"><input type="radio" name="uso" value="Nunca" required> Nunca</label>
+            <label class="chip"><input type="radio" name="uso" value="Algunas veces"> Algunas veces</label>
+            <label class="chip"><input type="radio" name="uso" value="Casi siempre"> Casi siempre</label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="flabel" for="lentitud">¿Qué tan lentas funcionan en los computadores del liceo? <output id="lentOut">3</output>/5</label>
+          <input type="range" id="lentitud" name="lentitud" min="1" max="5" value="3">
+          <div class="scale"><span>Muy rápidas</span><span>Muy lentas</span></div>
+        </div>
+        <div class="field">
+          <span class="flabel">¿Qué problemas has visto? (puedes marcar varios)</span>
+          <div class="opts">
+            <label class="chip"><input type="checkbox" name="problemas" value="Se traba"> Se traba</label>
+            <label class="chip"><input type="checkbox" name="problemas" value="Tarda en cargar"> Tarda en cargar</label>
+            <label class="chip"><input type="checkbox" name="problemas" value="No se puede abrir"> No se puede abrir</label>
+            <label class="chip"><input type="checkbox" name="problemas" value="Se cierra sola"> Se cierra sola</label>
+            <label class="chip"><input type="checkbox" name="problemas" value="Ninguno" id="probNone"> Ninguno</label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="flabel" for="afecta">¿Cuánto afecta esto al aprendizaje? <output id="afectaOut">3</output>/5</label>
+          <input type="range" id="afecta" name="afecta" min="1" max="5" value="3">
+          <div class="scale"><span>Nada</span><span>Muchísimo</span></div>
+        </div>
+        <div class="field">
+          <span class="flabel">¿Usarías una versión más liviana aunque tenga menos detalles?</span>
+          <div class="opts">
+            <label class="chip"><input type="radio" name="liviana" value="Sí" required> Sí</label>
+            <label class="chip"><input type="radio" name="liviana" value="No"> No</label>
+            <label class="chip"><input type="radio" name="liviana" value="No sé"> No sé</label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="flabel" for="comentario">Comentario (opcional)</label>
+          <textarea id="comentario" name="comentario" rows="3" maxlength="300" placeholder="No escribas tu nombre ni datos personales."></textarea>
+        </div>
+        <button class="btn primary" type="submit">Enviar respuesta</button>
+      </form>
+
+      <div class="reveal" id="surveyRes"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">08 · Pon a prueba lo aprendido</span>
+      <h2>Quiz de capacidad de cálculo</h2>
+      <p class="lead">Ocho preguntas rápidas. Cada respuesta incluye una explicación.</p>
+    </div>
+    <div class="panel quiz reveal" id="quizBox" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ GLOSARIO + FAQ ============ -->
+<section id="glosario" class="alt">
+  <div class="wrap two" style="align-items:start">
+    <div class="reveal">
+      <span class="eyebrow">09 · Glosario</span>
+      <h2>Palabras clave</h2>
+      <input type="search" id="glosSearch" class="search" placeholder="Buscar un término…" aria-label="Buscar en el glosario">
+      <dl id="glosList" class="gloss"></dl>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Dudas comunes</h2>
+      <div class="faq">
+        <details><summary>¿Más RAM significa que el computador calcula más rápido?</summary><p>No exactamente. La RAM evita que el equipo se trabe cuando maneja muchos datos, pero la velocidad de cálculo depende sobre todo del procesador. Un equipo necesita un buen equilibrio entre ambos.</p></details>
+        <details><summary>¿Por qué mi celular a veces corre mejor la simulación que el computador del liceo?</summary><p>Los celulares modernos tienen procesadores recientes con varios núcleos. Un computador antiguo o con muchos programas abiertos puede quedar por debajo, aunque sea más grande.</p></details>
+        <details><summary>¿El test mide el internet?</summary><p>No. Mide el cálculo del procesador y la fluidez al dibujar. La velocidad de conexión influye en la carga inicial, pero esa parte se observa con el tiempo que tarda en abrir la simulación.</p></details>
+        <details><summary>¿Por qué cambia el resultado cada vez que repito el test?</summary><p>Porque el equipo hace otras tareas al mismo tiempo. Por eso conviene repetir la medición tres veces y quedarse con el promedio.</p></details>
+        <details><summary>¿Una simulación liviana enseña menos?</summary><p>No necesariamente. Si mantiene las variables importantes del fenómeno, enseña lo mismo con menos detalle gráfico, y además corre mucho mejor en equipos de poca capacidad.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EQUIPO ============ -->
+<section id="equipo" class="alt">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Equipo</span>
+      <h2>Quiénes hicimos este proyecto</h2>
+      <p class="lead">Curso 4° H · Profesora Alicia Leal González · ABP en nuestro liceo.</p>
+    </div>
+    <div class="team">
+      <div class="member reveal"><div class="avatar">R</div><strong>Rafael Rodríguez Jara</strong><span>Coordinador</span></div>
+      <div class="member reveal"><div class="avatar">B</div><strong>Benjamín Vergara</strong><span>Investigador</span></div>
+      <div class="member reveal"><div class="avatar">E</div><strong>Eric Araya</strong><span>Diseñador</span></div>
+      <div class="member reveal"><div class="avatar">M</div><strong>Maximiliano Pacheco</strong><span>Gestor de datos</span></div>
+      <div class="member reveal"><div class="avatar">M</div><strong>Matías Arol</strong><span>Comunicador</span></div>
+    </div>
+
+    <div class="cta reveal" style="margin-top:70px">
+      <h2>Mejorar la tecnología <span class="grad">es posible</span></h2>
+      <p>Con datos, creatividad y un uso más inteligente de los recursos, podemos lograr que las simulaciones sean una herramienta real de aprendizaje en nuestro liceo.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn primary" href="#laboratorio">⚡ Volver al laboratorio</a>
+        <button class="btn ghost" id="shareBtn" type="button" data-share>🔗 Compartir esta página</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Proyecto ABP · Liceo Bicentenario Instituto Comercial · Departamento de Ciencias · 2026</div>
+</footer>
+
+<div class="tabbar" id="tabbar" role="navigation" aria-label="Navegación principal">
+  <a href="#inicio" data-tab="inicio"><i>🏠</i><span>Inicio</span></a>
+  <a href="#concepto" data-tab="aprender"><i>📘</i><span>Aprender</span></a>
+  <a href="#laboratorio" data-tab="lab" class="tab-main"><i>⚡</i><span>Laboratorio</span></a>
+  <a href="#calculadora" data-tab="calc"><i>🧮</i><span>Calcular</span></a>
+  <button type="button" id="moreBtn" data-tab="mas" aria-haspopup="dialog" aria-expanded="false" aria-controls="sheet"><i>☰</i><span>Más</span></button>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Todas las secciones" tabindex="-1">
+    <div class="sheet-grip"></div>
+    <h3>Ir a una sección</h3>
+    <div class="sheet-grid">
+      <a href="#inicio"><i>🏠</i>Inicio</a>
+      <a href="#concepto"><i>📘</i>Concepto</a>
+      <a href="#historia"><i>🕰️</i>Historia</a>
+      <a href="#crecimiento"><i>📈</i>Crecimiento</a>
+      <a href="#problema"><i>⚠️</i>El problema</a>
+      <a href="#laboratorio"><i>⚡</i>Laboratorio</a>
+      <a href="#calculadora"><i>🧮</i>Calculadora</a>
+      <a href="#soluciones"><i>💡</i>Soluciones</a>
+      <a href="#encuesta"><i>📝</i>Encuesta</a>
+      <a href="#quiz"><i>🎯</i>Quiz</a>
+      <a href="#glosario"><i>📖</i>Glosario</a>
+      <a href="#equipo"><i>👥</i>Equipo</a>
+    </div>
+    <div class="sheet-actions">
+      <button class="btn ghost" type="button" data-theme-toggle>🌓 Cambiar tema</button>
+      <button class="btn ghost" type="button" data-share>🔗 Compartir</button>
+    </div>
+  </div>
+</div>
+
+<button id="toTop" class="to-top" type="button" aria-label="Volver arriba">↑</button>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/utils.js" defer></script>
+<script src="js/lab.js" defer></script>
+<script src="js/tools.js" defer></script>
+</body>
+</html>
